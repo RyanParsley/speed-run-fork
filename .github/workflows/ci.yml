@@ -40,7 +40,7 @@ jobs:
 
       - run: npx nx-cloud record -- nx format:check
 
-      - run: npx nx run-many --target=build --all=true
+      - run: npx nx run speed-run:build --baseHref=https://ryanparsley.github.io/speed-run/
 
       - run: npx nx affected -t lint test build e2e-ci
 
