@@ -1,0 +1,81 @@
+{
+  "name": "speed-run",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "speed-run",
+  "sourceRoot": "apps/speed-run/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:application",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/speed-run",
+        "index": "apps/speed-run/src/index.html",
+        "browser": "apps/speed-run/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/speed-run/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/speed-run/src/favicon.ico",
+          "apps/speed-run/src/assets"
+        ],
+        "styles": ["apps/speed-run/src/styles.scss"],
+        "scripts": [],
+        "server": "apps/speed-run/src/main.server.ts",
+        "prerender": true,
+        "ssr": {
+          "entry": "apps/speed-run/server.ts"
+        }
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "buildTarget": "speed-run:build:production"
+        },
+        "development": {
+          "buildTarget": "speed-run:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "buildTarget": "speed-run:build"
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "speed-run:build",
+        "staticFilePath": "dist/apps/speed-run/browser"
+      }
+    }
+  }
+}
