@@ -53,11 +53,14 @@
       "unitTestRunner": "jest"
     },
     "@nx/angular:component": {
+      "style": "css",
       "inlineStyle": true,
       "inlineTemplate": true,
       "changeDetection": "OnPush"
     },
     "@nx/angular:library": {
+      "linter": "eslint",
+      "unitTestRunner": "jest",
       "inlineStyle": true,
       "inlineTemplate": true,
       "changeDetection": "OnPush"

@@ -1,14 +1,33 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { NxWelcomeComponent } from './nx-welcome.component';
 
 @Component({
   standalone: true,
-  imports: [NxWelcomeComponent, RouterModule],
+  imports: [RouterModule],
   selector: 'speed-run-root',
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+  template: `
+    <h1>{{ title }}</h1>
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+  `,
+  styles: [
+    `
+      :host {
+        display: block;
+      }
+      h1 {
+        background: #333;
+        padding: 3em;
+        margin: 0;
+        color: #fff;
+      }
+      .content {
+        padding: 1rem;
+      }
+    `,
+  ],
 })
 export class AppComponent {
-  title = 'speed-run';
+  title = 'Speedrun';
 }
