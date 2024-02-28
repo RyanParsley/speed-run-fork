@@ -7,6 +7,26 @@ import { RouterModule } from '@angular/router';
   selector: 'speed-run-root',
   template: `
     <h1>{{ title }}</h1>
+    <nav>
+      <ul>
+        <li>
+          <a
+            routerLink="/"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page"
+            >Home</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/note"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page"
+            >Note</a
+          >
+        </li>
+      </ul>
+    </nav>
     <div class="content">
       <router-outlet></router-outlet>
     </div>
