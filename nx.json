@@ -56,6 +56,11 @@
       "inlineStyle": true,
       "inlineTemplate": true,
       "changeDetection": "OnPush"
+    },
+    "@nx/angular:library": {
+      "inlineStyle": true,
+      "inlineTemplate": true,
+      "changeDetection": "OnPush"
     }
   },
   "nxCloudAccessToken": "ZDM5MGU4NTQtMjFiOS00NTg3LWFkMGEtYTI3MmVkMzYwMzBifHJlYWQtd3JpdGU="
