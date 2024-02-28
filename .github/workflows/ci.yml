@@ -8,7 +8,7 @@ on:
 
 permissions:
   actions: read
-  contents: read
+  contents: write
 
 jobs:
   main:
@@ -30,5 +30,24 @@ jobs:
       - run: npm ci
       - uses: nrwl/nx-set-shas@v4
 
+      - run: |
+          echo "BASE: ${{ env.NX_BASE }}"
+          echo "HEAD: ${{ env.NX_HEAD }}"
+
+      - run: |
+          echo "BASE: ${{ steps.setSHAs.outputs.base }}"
+          echo "HEAD: ${{ steps.setSHAs.outputs.head }}"
+
       - run: npx nx-cloud record -- nx format:check
+
+      - run: npx nx run-many --target=build --all=true
+
       - run: npx nx affected -t lint test build e2e-ci
+
+      - run: ls
+      - run: tree
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4.5.0
+        with:
+          folder: dist/apps
