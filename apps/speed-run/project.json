@@ -76,6 +76,14 @@
         "buildTarget": "speed-run:build",
         "staticFilePath": "dist/apps/speed-run/browser"
       }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "options": {
+        "jestConfig": "apps/speed-run/jest.config.ts",
+        "json": true,
+        "outputFile": "speed-run-jest-output.json"
+      }
     }
   }
 }
