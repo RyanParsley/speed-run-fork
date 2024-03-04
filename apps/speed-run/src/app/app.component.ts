@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -48,7 +48,7 @@ import { RouterModule } from '@angular/router';
     `,
   ],
 })
-export class AppComponent implements OnChanges, OnInit {
+export class AppComponent {
   title = 'Speedrun';
   private foo = 'bar';
 }
