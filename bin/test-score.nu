@@ -11,7 +11,7 @@ def main [] {
   let lintModifier = 300
   let total = $timeScore + $testScore - $lintModifier - $compilerModifier
 
-  { timeScore: $timeScore, testScore: $testScore, lintModifier: $lintModifier, compilerModifier: $compilerModifier, total: $total } | save dist/score.json -f
+  { timeScore: $timeScore, testScore: $testScore, lintModifier: $lintModifier, compilerModifier: $compilerModifier, total: $total } | save dist/apps/score.json -f
 }
 
 def calculateScore [rawValue] {
