@@ -43,9 +43,15 @@ jobs:
       - run: npx nx run speed-run:build --baseHref=https://ryanparsley.github.io/speed-run/speed-run/browser/
       - run: npx nx affected -t lint test build e2e-ci
 
-      - run: ls
-      - run: tree
+      # Make Nushell available
+      - name: Setup Nu
+        uses: hustcer/setup-nu@v3.9
 
+      # Generate a score
+      - name: Run Score Script
+        run: nu bin/test-score.nu
+
+      # Deploy dist
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4.5.0
         with:
