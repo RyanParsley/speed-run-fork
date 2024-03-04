@@ -5,12 +5,13 @@ def main [] {
 
   # We get a value from the unit test artifact for scoring
   let testScore = calculateScore (open speed-run-jest-output.json | get numPassedTests)
-  let compilerModifier = calculateCompilerModifier
+  # let compilerModifier = calculateCompilerModifier
+  let compilerModifier = 200
   let timeScore = 1000
   let lintModifier = 300
   let total = $timeScore + $testScore - $lintModifier - $compilerModifier
 
-  { timeScore: $timeScore, testScore: $testScore, lintModifier: $lintModifier, compilerModifier: $compilerModifier, total: $total } | save score.json
+  { timeScore: $timeScore, testScore: $testScore, lintModifier: $lintModifier, compilerModifier: $compilerModifier, total: $total } | save dist/score.json -f
 }
 
 def calculateScore [rawValue] {
