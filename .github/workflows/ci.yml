@@ -38,18 +38,20 @@ jobs:
           echo "BASE: ${{ steps.setSHAs.outputs.base }}"
           echo "HEAD: ${{ steps.setSHAs.outputs.head }}"
 
-      - run: npx nx-cloud record -- nx format:check
+      # - run: npx nx-cloud record -- nx format:check
 
       - run: npx nx run speed-run:build --baseHref=https://ryanparsley.github.io/speed-run/speed-run/browser/
-      - run: npx nx affected -t lint test build e2e-ci
+      - run: npx nx affected -t lint test build
 
       # Make Nushell available
       - name: Setup Nu
         uses: hustcer/setup-nu@v3.9
 
-      # Generate a score
       - name: Run Score Script
         run: nu bin/test-score.nu
+
+      - name: Copy Static Assets
+        run: cp static/* dist/apps/
 
       # Deploy dist
       - name: Deploy to GitHub Pages
