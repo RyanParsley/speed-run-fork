@@ -49,3 +49,19 @@ tbody > tr:last-child {
 tbody > tr:last-child td {
   padding-top: 1rem;
 }
+
+.toApp {
+  display: block;
+  background: #efefef;
+  border: solid 1px #ccc;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 20rem;
+  text-align: center;
+  text-decoration: none;
+  color: #999;
+}
+.toApp:hover {
+  color: #ccc;
+  background: #666;
+}
