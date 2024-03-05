@@ -7,7 +7,7 @@ def main [] {
   let testScore = calculateTestScore (open speed-run-jest-output.json | get numPassedTests)
   let timeScore = 1000
   let lintModifier = calculateLintModifier
-  let total = $timeScore + $testScore - $lintModifier - $compilerModifier
+  let total = $timeScore + $testScore - $lintModifier
 
   { timeScore: $timeScore, testScore: $testScore, lintModifier: $lintModifier, total: $total } | save dist/apps/score.json -f
 }
