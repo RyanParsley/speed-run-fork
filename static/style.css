@@ -1,0 +1,14 @@
+html {
+}
+body {
+  background: coral;
+}
+.container {
+  width: 90%;
+  max-width: 16rem;
+  margin: 0 auto;
+  background: #fff;
+  display: block;
+  padding: 0.5rem 1rem;
+  border-radius: 3px;
+}
