@@ -18,7 +18,8 @@
         "inlineStyleLanguage": "scss",
         "assets": [
           "apps/speed-run/src/favicon.ico",
-          "apps/speed-run/src/assets"
+          "apps/speed-run/src/assets",
+          "apps/speed-run/src/data"
         ],
         "styles": ["apps/speed-run/src/styles.scss"],
         "scripts": [],
