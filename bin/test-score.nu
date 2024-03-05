@@ -28,8 +28,8 @@ def calculateLintModifier [] {
 
   let parsed = $results | parse '{_} {total} {_} {error} {_} {warning} {_}' | select error warning | update error {|row| $row.error | str replace '(' '' }
 
-  let errorScore = ($parsed.error | into int | first | $in * 50)
-  let warningScore = ($parsed.warning | into int | first | $in * 20)
+  let errorScore = $parsed.error | into int | first | $in * 50
+  let warningScore = $parsed.warning | into int | first | $in * 20
 
-  ($errorScore + $warningScore)
+  $errorScore + $warningScore
 }
