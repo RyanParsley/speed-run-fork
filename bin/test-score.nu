@@ -9,7 +9,7 @@ def main [] {
   let lintModifier = calculateLintModifier
   let total = $timeScore + $testScore - $lintModifier
 
-  { timeScore: $timeScore, testScore: $testScore, lintModifier: $lintModifier, total: $total } | save dist/apps/score.json -f
+  { timeScore: $timeScore, testScore: $testScore, lintModifier: $lintModifier, total: $total } | save static/score.json -f
 }
 
 def calculateTestScore [rawValue] {
