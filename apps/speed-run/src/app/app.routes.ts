@@ -12,6 +12,10 @@ export const appRoutes: Route[] = [
     loadChildren: () => import('@speed-run/note').then((c) => c.noteRoutes),
   },
   {
+    path: 'notFound',
+    component: NotFoundComponent,
+  },
+  {
     path: '**',
     component: NotFoundComponent,
   },

@@ -1,7 +1,6 @@
 {
   "timeScore": 1000,
   "testScore": 300,
-  "lintModifier": 300,
-  "compilerModifier": 200,
-  "total": 800
+  "lintModifier": 0,
+  "total": 1300
 }

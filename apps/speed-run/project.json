@@ -23,7 +23,9 @@
         "styles": ["apps/speed-run/src/styles.scss"],
         "scripts": [],
         "server": "apps/speed-run/src/main.server.ts",
-        "prerender": true,
+        "prerender": {
+          "routesFile": "routes.txt"
+        },
         "ssr": {
           "entry": "apps/speed-run/server.ts"
         }
