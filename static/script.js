@@ -1,9 +1,9 @@
 const listElement = document.getElementById('list');
 
 const initialList = [
-  { title: 'Test Score', count: '?' },
-  { title: 'Lint Modifier', count: '?' },
-  { title: 'Total', count: '?' },
+  { title: 'Test Score', value: '?' },
+  { title: 'Lint Modifier', value: '?' },
+  { title: 'Total', value: '?' },
 ];
 
 const updateList = () => {
@@ -19,11 +19,11 @@ const updateList = () => {
       // Examine the text in the response
       response.json().then(function (data) {
         listElement.innerHTML = renderList([
-          { title: 'Test Score', count: data.testScore },
-          { title: 'Time Score', count: data.timeScore },
-          { title: 'Lint Modifier', count: data.lintModifier },
-          { title: 'Compiler Modifier', count: data.compilerModifier },
-          { title: 'Total', count: data.total },
+          { title: 'Test Score', value: data.testScore },
+          { title: 'Time Score', value: data.timeScore },
+          { title: 'Lint Modifier', value: data.lintModifier },
+          { title: 'Compiler Modifier', value: data.compilerModifier },
+          { title: 'Total', value: data.total },
         ]);
       });
     })
@@ -36,12 +36,12 @@ const updateList = () => {
 const renderList = (items = []) =>
   items
     .map(
-      ({ title = '', count = '' }) =>
+      ({ title = '', value = '' }) =>
         `
-          <li>
-            <h2>${title}</h2>
-            <p>count: ${count}</p>
-         </li>
+          <tr>
+            <td>${title}</td>
+            <td class="value">${value}</td>
+         </tr>
        `
     )
     .join('');
