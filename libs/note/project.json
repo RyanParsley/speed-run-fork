@@ -5,5 +5,14 @@
   "prefix": "speed-run",
   "tags": [],
   "projectType": "library",
-  "targets": {}
+  "targets": {
+    "test": {
+      "executor": "@nx/jest:jest",
+      "options": {
+        "jestConfig": "libs/note/jest.config.ts",
+        "json": true,
+        "outputFile": "dist/testScores/note-jest-output.json"
+      }
+    }
+  }
 }

@@ -1,10 +1,9 @@
 #!/usr/bin/env nu
 def main [] {
-  # This is the syntax to run arbitrary commands
-  run-external "npx" "nx" "test" "speed-run"
+  npx nx run-many --target=test --all
 
   # We get a value from the unit test artifact for scoring
-  let testScore = calculateTestScore (open speed-run-jest-output.json | get numPassedTests)
+  let testScore = calculateTestScore
   let timeScore = 1000
   let lintModifier = calculateLintModifier
   let total = $timeScore + $testScore - $lintModifier
@@ -12,9 +11,10 @@ def main [] {
   { timeScore: $timeScore, testScore: $testScore, lintModifier: $lintModifier, total: $total } | save static/score.json -f
 }
 
-def calculateTestScore [rawValue] {
+def calculateTestScore [] {
+  let passingTests = ls dist/testScores | each { | file | $file.name | open | get numPassedTests } | math sum
   # 100 points for each passing test is a naive yet reasonable starting point
-  $rawValue * 100
+  $passingTests * 100
 }
 
 def calculateLintModifier [] {
