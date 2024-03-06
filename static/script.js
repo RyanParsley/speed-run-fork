@@ -46,5 +46,10 @@ const renderList = (items = []) =>
     )
     .join('');
 
+const appUrl = ['localhost', '127.0.0.1'].includes(location.hostname)
+  ? 'http://localhost:4200/'
+  : 'https://ryanparsley.github.io/speed-run/speed-run/browser/';
+
+document.getElementById('outbound').href = appUrl;
 listElement.innerHTML = renderList(initialList);
 updateList();
