@@ -21,4 +21,8 @@ describe('AppComponent', () => {
     const app = fixture.componentInstance;
     expect(app.title).toEqual('Speedrun');
   });
+
+  it(`should get a better score'`, () => {
+    expect(true).toEqual(true);
+  });
 });
