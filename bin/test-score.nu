@@ -18,18 +18,33 @@ def calculateTestScore [rawValue] {
 }
 
 def calculateLintModifier [] {
-  let results = npx nx run speed-run:lint | grep -w problem
+  let results = npx nx run-many --target=lint --all --verbose  | grep problem | lines
 
   if ($results | is-empty) { return 0 }
 
+  parseLintResults $results
+}
+
+def parseLintResults [results: list<string>] {
   # Linter returns something like:
   # ✖ 1 problem (0 errors, 1 warning)
   # so we can parse it like so...
 
   let parsed = $results | parse '{_} {total} {_} {error} {_} {warning} {_}' | select error warning | update error {|row| $row.error | str replace '(' '' }
 
-  let errorScore = $parsed.error | into int | first | $in * 50
-  let warningScore = $parsed.warning | into int | first | $in * 20
+  let errorScore = $parsed | get error | into int | math sum | $in * 50 | default 0
+  let warningScore = $parsed | get warning | into int | math sum | $in * 20
 
   $errorScore + $warningScore
+
+}
+
+use std assert
+
+#[test]
+def test_lint_parsing [] {
+  let input = ['✖ 1 problem (0 errors, 1 warning)','✖ 2 problems (1 errors, 1 warning)']
+  let assertion = 90
+
+  assert equal (parseLintResults $input) $assertion
 }

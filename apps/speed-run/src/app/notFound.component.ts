@@ -9,4 +9,6 @@ import { CommonModule } from '@angular/common';
   styles: ``,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NotFoundComponent {}
+export class NotFoundComponent {
+  foo:any;
+}
