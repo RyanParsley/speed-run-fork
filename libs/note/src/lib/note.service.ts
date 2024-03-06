@@ -1,14 +1,24 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Observable } from 'rxjs';
+import { DOCUMENT } from '@angular/common';
 
 @Injectable({
   providedIn: 'root',
 })
 export class NoteService {
-  private readonly endpoint =
-    'https://ryanparsley.github.io/speed-run/speed-run/browser/data/notes.json';
-  constructor(private readonly http: HttpClient) {}
+  private readonly base = ['localhost', '127.0.0.1'].includes(
+    this.document.location.hostname
+  )
+    ? '/'
+    : 'https://ryanparsley.github.io/speed-run/speed-run/browser/';
+
+  private readonly endpoint = `${this.base}data/notes.json`;
+
+  constructor(
+    private readonly http: HttpClient,
+    @Inject(DOCUMENT) private document: Document
+  ) {}
 
   getNotes(): Readonly<Observable<any>> {
     return this.http.get<any>(this.endpoint);
