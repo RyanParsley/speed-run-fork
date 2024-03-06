@@ -41,6 +41,8 @@ jobs:
       # - run: npx nx-cloud record -- nx format:check
 
       - run: npx nx run speed-run:build --baseHref=https://ryanparsley.github.io/speed-run/speed-run/browser/
+
+      - run: mkdir dist/testScores
       - run: npx nx affected -t lint test build
 
       # Make Nushell available
