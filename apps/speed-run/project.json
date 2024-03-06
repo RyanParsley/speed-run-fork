@@ -85,7 +85,7 @@
       "options": {
         "jestConfig": "apps/speed-run/jest.config.ts",
         "json": true,
-        "outputFile": "speed-run-jest-output.json"
+        "outputFile": "dist/testScores/speed-run-jest-output.json"
       }
     }
   }
