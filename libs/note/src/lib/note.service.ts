@@ -6,7 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class NoteService {
-  private readonly endpoint = 'speed-run/speed-run/browser/data/notes.json';
+  private readonly endpoint =
+    'https://ryanparsley.github.io/speed-run/speed-run/browser/data/notes.json';
   constructor(private readonly http: HttpClient) {}
 
   getNotes(): Readonly<Observable<any>> {
