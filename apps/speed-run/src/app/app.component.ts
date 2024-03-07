@@ -23,7 +23,7 @@ import { NavComponent } from '@speed-run/shared-ui';
       }
       h1 {
         background: #333;
-        padding: 3em;
+        padding: 2rem 1.5rem 1.5rem;
         margin: 0;
         color: #fff;
       }

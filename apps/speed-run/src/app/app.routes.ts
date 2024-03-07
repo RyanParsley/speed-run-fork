@@ -15,12 +15,17 @@ export const appRoutes: Route[] = [
     component: NotFoundComponent,
   },
   {
+    path: 'account',
+    loadComponent: () =>
+      import('@speed-run/user').then((c) => c.UserEditComponent),
+  },
+  {
     path: '',
     redirectTo: '/note',
     pathMatch: 'full',
   },
   {
     path: '**',
-    component: NotFoundComponent,
+    redirectTo: 'notFound',
   },
 ];

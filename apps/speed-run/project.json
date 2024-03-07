@@ -22,6 +22,9 @@
           "apps/speed-run/src/data"
         ],
         "styles": ["apps/speed-run/src/styles.scss"],
+        "stylePreprocessorOptions": {
+          "includePaths": ["apps/speed-run/src/styles.scss"]
+        },
         "scripts": [],
         "server": "apps/speed-run/src/main.server.ts",
         "prerender": {

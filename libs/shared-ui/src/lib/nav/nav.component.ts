@@ -8,7 +8,7 @@ import { RouterModule } from '@angular/router';
   imports: [CommonModule, RouterModule],
   template: `
     <nav>
-      <ul>
+      <ul class="primary">
         <li>
           <a
             routerLink="/"
@@ -35,6 +35,19 @@ import { RouterModule } from '@angular/router';
           >
         </li>
       </ul>
+      <ul class="secondary">
+        <li>
+          <a
+            routerLink="/account"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page"
+            >Account</a
+          >
+        </li>
+        <li>
+          <a href="#">Log Out</a>
+        </li>
+      </ul>
     </nav>
   `,
   styles: `
@@ -42,6 +55,9 @@ import { RouterModule } from '@angular/router';
       border: solid 1px #333;
       margin: 1rem;
       border-radius: 3rem;
+    }
+    ul {
+      display: inline-block;
     }
     li {
         display: inline-block;
