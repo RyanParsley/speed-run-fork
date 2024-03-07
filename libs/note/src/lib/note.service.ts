@@ -13,7 +13,7 @@ export class NoteService {
     ? '/'
     : 'https://ryanparsley.github.io/speed-run/speed-run/browser/';
 
-  private readonly endpoint = `${this.base}data/notes.json`;
+  private readonly endpoint = `${this.base}data/`;
 
   constructor(
     private readonly http: HttpClient,
@@ -21,6 +21,9 @@ export class NoteService {
   ) {}
 
   getNotes(): Readonly<Observable<any>> {
-    return this.http.get<any>(this.endpoint);
+    return this.http.get<any>(`${this.endpoint}notes.json`);
+  }
+  getNote(id: number): Readonly<Observable<any>> {
+    return this.http.get<any>(`${this.endpoint}note-${id}.json`);
   }
 }
