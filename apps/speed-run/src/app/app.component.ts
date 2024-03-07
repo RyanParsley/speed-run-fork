@@ -2,33 +2,16 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
+import { NavComponent } from '@speed-run/shared-ui';
+
 @Component({
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule, NavComponent],
   providers: [HttpClient],
   selector: 'speed-run-root',
   template: `
     <h1>{{ title }}</h1>
-    <nav>
-      <ul>
-        <li>
-          <a
-            routerLink="/"
-            routerLinkActive="active"
-            ariaCurrentWhenActive="page"
-            >Home</a
-          >
-        </li>
-        <li>
-          <a
-            routerLink="/note"
-            routerLinkActive="active"
-            ariaCurrentWhenActive="page"
-            >Note</a
-          >
-        </li>
-      </ul>
-    </nav>
+    <speed-run-nav />
     <div class="content">
       <router-outlet></router-outlet>
     </div>

@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@speed-run/note": ["libs/note/src/index.ts"]
+      "@speed-run/note": ["libs/note/src/index.ts"],
+      "@speed-run/shared-ui": ["libs/shared-ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
