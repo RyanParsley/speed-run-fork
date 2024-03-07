@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'speed-run-nav',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   template: `
     <nav>
       <ul>
@@ -41,8 +42,15 @@ import { CommonModule } from '@angular/common';
         padding: 1rem;
         margin: 0 .5rem;
         border-radius: .5rem;
-        &:hover, &.active {
+        text-decoration: none;
+        color: #333;
+        &:hover {
+          background: #666;
+          color: #fff;
+        }
+        &.active, {
           background: #999;
+          color: #000;
         }
       }
     }
