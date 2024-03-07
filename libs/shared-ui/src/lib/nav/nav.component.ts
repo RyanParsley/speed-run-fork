@@ -14,6 +14,7 @@ import { RouterModule } from '@angular/router';
             routerLink="/"
             routerLinkActive="active"
             ariaCurrentWhenActive="page"
+            [routerLinkActiveOptions]="{ exact: true }"
             >Home</a
           >
         </li>
@@ -22,7 +23,15 @@ import { RouterModule } from '@angular/router';
             routerLink="/note"
             routerLinkActive="active"
             ariaCurrentWhenActive="page"
-            >Note</a
+            >Notes</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/user"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page"
+            >Users</a
           >
         </li>
       </ul>
