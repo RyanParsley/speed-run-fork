@@ -55,7 +55,7 @@
       "unitTestRunner": "jest"
     },
     "@nx/angular:component": {
-      "style": "css",
+      "style": "scss",
       "inlineStyle": true,
       "inlineTemplate": true,
       "changeDetection": "OnPush"
