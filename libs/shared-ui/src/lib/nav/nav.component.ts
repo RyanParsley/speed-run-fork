@@ -42,26 +42,26 @@ import { RouterModule } from '@angular/router';
       border: solid 1px #333;
       margin: 1rem;
       border-radius: 3rem;
-      li {
+    }
+    li {
         display: inline-block;
       }
-      a {
-        display: inline-block;
-        background: #efefef;
-        padding: 1rem;
-        margin: 0 .5rem;
-        border-radius: .5rem;
-        text-decoration: none;
-        color: #333;
-        &:hover {
-          background: #666;
-          color: #fff;
-        }
-        &.active, {
-          background: #999;
-          color: #000;
-        }
-      }
+    a {
+      display: inline-block;
+      background: #efefef;
+      padding: 1rem;
+      margin: 0 .5rem;
+      border-radius: .5rem;
+      text-decoration: none;
+      color: #333;
+    }
+    a:hover {
+      background: #666;
+      color: #fff;
+    }
+    a.active, {
+      background: #999;
+      color: #000;
     }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
