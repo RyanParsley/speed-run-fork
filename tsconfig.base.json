@@ -16,7 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@speed-run/note": ["libs/note/src/index.ts"],
-      "@speed-run/shared-ui": ["libs/shared-ui/src/index.ts"]
+      "@speed-run/shared-ui": ["libs/shared-ui/src/index.ts"],
+      "@speed-run/user": ["libs/user/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
