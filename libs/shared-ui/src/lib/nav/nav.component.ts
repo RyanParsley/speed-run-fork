@@ -54,19 +54,29 @@ import { RouterModule } from '@angular/router';
     nav {
       border: solid 1px #333;
       margin: 1rem;
-      border-radius: 3rem;
+      padding: .5rem .75rem;
+      border-radius: .5rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
     }
     ul {
-      display: inline-block;
+      display: flex;
+      padding:0;
+      margin:0;
+      flex: 1;
+      gap: 1rem;
+    }
+    ul.secondary {
+      justify-content: flex-end;
     }
     li {
         display: inline-block;
-      }
+    }
     a {
       display: inline-block;
       background: #efefef;
       padding: 1rem;
-      margin: 0 .5rem;
       border-radius: .5rem;
       text-decoration: none;
       color: #333;
