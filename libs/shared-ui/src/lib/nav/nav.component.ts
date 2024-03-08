@@ -45,7 +45,7 @@ import { RouterModule } from '@angular/router';
           >
         </li>
         <li>
-          <a href="#">Log Out</a>
+          <a href="#">Log&nbsp;Out</a>
         </li>
       </ul>
     </nav>
@@ -54,28 +54,47 @@ import { RouterModule } from '@angular/router';
     nav {
       border: solid 1px #333;
       margin: 1rem;
-      border-radius: 3rem;
+      padding: .5rem .75rem;
+      border-radius: .5rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
     }
     ul {
-      display: inline-block;
+      display: flex;
+      padding:0;
+      margin:0;
+      flex: 1;
+      gap: 1rem;
+    }
+    ul.secondary {
+      justify-content: flex-end;
     }
     li {
         display: inline-block;
-      }
+    }
     a {
       display: inline-block;
-      background: #efefef;
-      padding: 1rem;
-      margin: 0 .5rem;
-      border-radius: .5rem;
+      padding: .5rem .25rem .25rem;
       text-decoration: none;
       color: #333;
     }
-    a:hover {
+    .secondary a {
+      border-bottom: .25rem solid #999;
+    }
+    .secondary a:hover {
+      border-bottom-color: #333;
+    }
+    .primary a {
+      background: #efefef;
+      border-radius: .5rem;
+      padding: .5rem 1rem .5rem;
+    }
+    .primary a:hover {
       background: #666;
       color: #fff;
     }
-    a.active, {
+    .primary a.active, {
       background: #999;
       color: #000;
     }
