@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { NavComponent } from '@speed-run/shared-ui';
@@ -9,8 +9,9 @@ import { NavComponent } from '@speed-run/shared-ui';
   imports: [RouterModule, NavComponent],
   providers: [HttpClient],
   selector: 'speed-run-root',
+  encapsulation: ViewEncapsulation.None,
   template: `
-    <h1>{{ title }}</h1>
+    <header>{{ title }}</header>
     <speed-run-nav />
     <div class="content">
       <router-outlet></router-outlet>
@@ -18,17 +19,41 @@ import { NavComponent } from '@speed-run/shared-ui';
   `,
   styles: [
     `
-      :host {
-        display: block;
-      }
-      h1 {
-        background: #333;
-        padding: 2rem 1.5rem 1.5rem;
+      html {
         margin: 0;
-        color: #fff;
+        padding: 0;
+        height: 100%;
       }
-      .content {
-        padding: 1rem;
+      body {
+        margin: 0;
+        background: #efefef;
+        height: 100%;
+        display: flex;
+        overflow: hidden;
+      }
+      speed-run-root {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        overflow-x: auto;
+        padding: 0 1rem 1rem;
+        header {
+          background: #333;
+          padding: 2rem 2.5rem 2.5rem;
+          margin: 0 -1rem;
+          color: #fff;
+          font-size: 2.5rem;
+        }
+        .content {
+          padding: 1rem;
+          width: 90%;
+          max-width: 62rem;
+          margin: 0 auto;
+          background: #fff;
+          border-radius: 3px;
+          box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+          flex: 1;
+        }
       }
     `,
   ],

@@ -13,7 +13,7 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Speedrun');
+    expect(compiled.querySelector('header')?.textContent).toContain('Speedrun');
   });
 
   it(`should have as title 'Speedrun'`, () => {
