@@ -2,7 +2,14 @@
 const scoreHolder = document.getElementById('scores');
 
 // Currently hard coded list of teams to include.
-const contestants = ['team-a', 'team-b'];
+const contestants = [
+  'team-a',
+  'team-b',
+  'team-c',
+  'team-d',
+  'team-e',
+  'team-f',
+];
 
 // Create a div per team to be injected into the DOM
 const renderScores = (teams) =>
@@ -11,7 +18,7 @@ const renderScores = (teams) =>
       (team) =>
         `
         <div data-team="${team}">
-          <h1>Score ${team}</h1>
+          <h1>${team}</h1>
           <table>
             <thead>
               <tr>
