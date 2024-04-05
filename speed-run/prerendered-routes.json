@@ -1,0 +1,14 @@
+{
+  "routes": [
+    "/",
+    "/account",
+    "/note",
+    "/note/0",
+    "/note/1",
+    "/note/42",
+    "/note/new",
+    "/notFound",
+    "/user",
+    "/user/new"
+  ]
+}
