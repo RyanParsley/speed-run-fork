@@ -3,22 +3,25 @@ const scoreHolder = document.getElementById('scores');
 
 // Currently hard coded list of teams to include.
 const contestants = [
-  'team-a',
-  'team-b',
-  'team-c',
-  'team-d',
-  'team-e',
-  'team-f',
+  { name: 'team-a', scoreLocation: 'team-a-score.json' },
+  { name: 'team-b', scoreLocation: 'team-b-score.json' },
+  { name: 'team-c', scoreLocation: 'team-c-score.json' },
+  { name: 'team-d', scoreLocation: 'team-d-score.json' },
+  { name: 'team-e', scoreLocation: 'team-e-score.json' },
+  { name: 'team-f', scoreLocation: 'team-f-score.json' },
 ];
 
-// Create a div per team to be injected into the DOM
-const renderScores = (teams) =>
-  teams
+/**
+ * Create a div per team to be injected into the DOM
+ * @param { { name: string, scoreLocation: string }[] } contestants
+ */
+const renderScores = (contestants) => {
+  return contestants
     .map(
-      (team) =>
+      ({ name }) =>
         `
-        <div data-team="${team}">
-          <h1>${team}</h1>
+        <div data-team="${name}">
+          <h1>${name}</h1>
           <table>
             <thead>
               <tr>
@@ -26,21 +29,28 @@ const renderScores = (teams) =>
                 <th class="value">Value</th>
               </tr>
             </thead>
-            <tbody id="${team}-list"></tbody>
+            <tbody id="${name}-list"></tbody>
           </table>
         </div>
 
        `
     )
     .join('');
+};
 
 // create a score placeholder per team
-scoreHolder.innerHTML = renderScores(contestants);
+scoreHolder?.innerHTML && (scoreHolder.innerHTML = renderScores(contestants));
 
+try {
+} catch (error) {
+  console.error(error);
+  // Expected output: ReferenceError: nonExistentFunction is not defined
+  // (Note: the exact output may be browser-dependent)
+}
 // Handles to the table set up for each team's score data
-const scoreElements = contestants.map((team) => ({
-  team,
-  element: document.getElementById(`${team}-list`),
+const scoreElements = contestants.map(({ name }) => ({
+  name,
+  element: document.getElementById(`${name}-list`),
 }));
 
 // Adjust the app link based on if we're in dev mode or not.
@@ -49,18 +59,22 @@ const appUrl = ['localhost', '127.0.0.1'].includes(location.hostname)
   : 'https://ryanparsley.github.io/speed-run/speed-run/browser/';
 
 // wire up a link to the demo app
-document.getElementById('outbound').href = appUrl;
+let outbound = document?.getElementById('outbound');
+outbound && (outbound['href'] = appUrl);
 
-// Initialize the app's state
+/**
+ * Initialize the app's state
+ * @type { { team: string, testScore: string, timeScore: string, lintModifier: string, total: string}[] }
+ */
 let scores = [];
 
 // Fetch many json files and update the dom to store them.
 const fetchScores = async () => {
-  return contestants.map(async (team) => {
-    fetch(`${team}-score.json`)
+  return contestants.map(async ({ name: team, scoreLocation }) => {
+    fetch(`${scoreLocation}`)
       .then(function (response) {
         if (response.status !== 200) {
-          console.err(
+          console.error(
             'Looks like there was a problem. Status Code: ' + response.status
           );
           return;
@@ -84,26 +98,34 @@ const fetchScores = async () => {
           });
       })
       .catch(function (err) {
-        console.err('Fetch Error :-S', err);
+        console.error('Fetch Error :-S', err);
       });
   });
 };
 
-// Inject scores to the approprate table
+/**
+ * Inject scores to the approprate table
+ * @param { { team: string, testScore: string, timeScore: string, lintModifier: string, total: string}[] } scores
+ */
 const updateList = (scores) => {
   scores.forEach((score) => {
-    scoreElements.find(
-      (element) => element.team == score.team
-    ).element.innerHTML = renderList([
-      { title: 'Test Score', value: score.testScore },
-      { title: 'Time Score', value: score.timeScore },
-      { title: 'Lint Modifier', value: score.lintModifier },
-      { title: 'Total', value: score.total },
-    ]);
+    const scoreElement = scoreElements.find(
+      (element) => element.name == score.team
+    );
+    scoreElement?.element &&
+      (scoreElement.element.innerHTML = renderList([
+        { title: 'Test Score', value: score.testScore },
+        { title: 'Time Score', value: score.timeScore },
+        { title: 'Lint Modifier', value: score.lintModifier },
+        { title: 'Total', value: score.total },
+      ]));
   });
 };
 
-// Define DOM to wrap around data
+/**
+ * Define DOM to wrap around data
+ * @param { {title: string, value: string}[] } items
+ */
 const renderList = (items = []) =>
   items
     .map(
