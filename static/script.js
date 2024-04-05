@@ -41,12 +41,6 @@ const renderScores = (contestants) => {
 // create a score placeholder per team
 scoreHolder?.innerHTML && (scoreHolder.innerHTML = renderScores(contestants));
 
-try {
-} catch (error) {
-  console.error(error);
-  // Expected output: ReferenceError: nonExistentFunction is not defined
-  // (Note: the exact output may be browser-dependent)
-}
 // Handles to the table set up for each team's score data
 const scoreElements = contestants.map(({ name }) => ({
   name,
