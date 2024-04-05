@@ -36,6 +36,7 @@
       },
       "configurations": {
         "production": {
+          "baseHref": "https://ryanparsley.github.io/speed-run-fork/speed-run/browser/",
           "budgets": [
             {
               "type": "initial",
